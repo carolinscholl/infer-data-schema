@@ -1,0 +1,15 @@
+version 1.2
+@totalColumns 12
+@separator ';'
+"var_bool": is("0") or is("1") or empty
+"var_sint": range(*, *) or empty
+"var_uint": positiveInteger or is("NA")
+"var_sfloat": range(*, *) or empty
+"var_ufloat": range(0, *) or empty
+"var_const": is("a")
+"var_str": length(1, *) or is("NA")
+"var_date": length(1, *) or empty
+"var_cat": any("a","b") or empty
+"var_xdate": xDate or empty
+"var_str_cap": upperCase length(1, *) or is("NA")
+"var_char": length(1) or is("NA") or empty
