@@ -49,5 +49,3 @@ The test can be run from the console on linux by executing `./run_test.sh`. Alte
 <br/><br/>
 ## Contribution
 Please do not hesitate to reach out, raise an issue or open a pull request.
-## License
-This source code is licensed under the BSD-3-Clause license found in the LICENSE file in the root directory of this source tree. 
