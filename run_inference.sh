@@ -15,11 +15,11 @@ conda activate $RUN_ENV
 export PYTHONPATH="${WORKDIR}:${PYTHONPATH}"
 
 if [[ ! -z $2 ]]; then
-  python ./src/main.py "$DATA_PATH" --schema_fpath "$SCHEMA_PATH"
+  python ./infer_schema/main.py "$DATA_PATH" --schema_fpath "$SCHEMA_PATH"
 elif [[ ! -z $1 ]]; then
-  python ./src/main.py "$DATA_PATH"
+  python ./infer_schema/main.py "$DATA_PATH"
 else
-  python ./src/main.py --h
+  python ./infer_schema/main.py --h
 fi
 
 conda deactivate

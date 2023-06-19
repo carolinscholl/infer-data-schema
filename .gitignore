@@ -159,4 +159,8 @@ cython_debug/
 .idea/
 .vscode
 
+log.txt
 tmp/
+
+**/*git*secret*
+**/*git*credential*

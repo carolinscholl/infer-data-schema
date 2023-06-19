@@ -7,7 +7,7 @@ from genson import SchemaBuilder
 from jsonschema import validate
 from jsonschema.exceptions import ValidationError
 
-from utils.utils import get_schema_fpath
+from infer_schema.utils.utils import get_schema_fpath
 
 JSONVersion = {
     6: "https://json-schema.org/draft-06/",  # draft_06
