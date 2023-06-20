@@ -24,22 +24,27 @@ A variable is considered to be categorical if it has less than 25 unique non-mis
 <br/><br/>
 ## Dependencies
 - python ~= 3.8
-- [conda package manager](https://docs.conda.io/en/latest/)
+- [pipx](https://pypa.github.io/pipx/) or [conda package manager](https://docs.conda.io/en/latest/)
 - modules listed in environment.yml (see installation instructions below)
 <br/><br/>
+
 ## Installation
-1. Clone the repository
+1. Clone the repository.
 2. Navigate to the local repository (`cd <path-to-local-repository>`) (on Windows, open Anaconda Prompt and execute `cd /d "<path-to-local-repository>"`)
-3. Install the conda environment `conda env create -f environment.yml` 
-4. (On Windows: Set CONDAPATH in run_inference.bat if it deviates from the one specified.)
 <br/><br/>
-## Run
-### Linux (tested on Ubuntu 20.04.5 LTS)
-Execute `./run_inference.sh <data-file-path> <optional-schema-file-path>`
-### Windows 10
-Execute `./run_inference.bat <data-file-path> <optional-schema-file-path>` in Windows PowerShell or Anaconda Prompt.
+### Option 1: Install and run with pipx
+1. If you have pipx installed, execute `pipx install .` at the root of this repository. This will trigger the installation. 
+2. Then you can run `run-schema-inference <data-file-path> <optional-schema-file-path>`
 <br/><br/>
-After calling the run_inference script, a schema will be created and saved under the specified schema path (if provided).
+### Option 2: Install and run with conda
+Both the bash and the shell script activate a conda environment and run the code within that.
+1. Install the conda environment `conda env create -f environment.yml` (On Windows: Set CONDAPATH in run_inference.bat if it deviates from the one specified.)
+2. Run the shell script or Batch file depending on your operating system:
+   - On Linux (tested on Ubuntu 20.04.5 LTS): Execute `./run_inference.sh <data-file-path> <optional-schema-file-path>`
+   - On Windows 10: Execute `./run_inference.bat <data-file-path> <optional-schema-file-path>` in Windows PowerShell or Anaconda Prompt.
+<br/><br/>
+
+After running the schema inference, a schema will be created and saved under the specified schema path (if provided).
 If no schema path is provided, the generated schema will be saved in the same directory as the data file with the suffix "_schema-draft". The extensions ".json" and ".csvs" will be used for the schema files, respectively. 
 Both absolute and relative paths are accepted. However, no spaces are allowed in the paths provided as parameters.
 <br/><br/>

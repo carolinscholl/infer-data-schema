@@ -22,15 +22,15 @@ if [%2]==[] goto standard_case
 goto custom_schema_path
 
 :help
-python "%BATDIR%\src\main.py"
+python "%BATDIR%\infer_schema\main.py"
 goto end
 
 :standard_case
-python "%BATDIR%\src\main.py" %DATA_PATH%
+python "%BATDIR%\infer_schema\main.py" %DATA_PATH%
 goto end
 
 :custom_schema_path
-python "%BATDIR%\src\main.py" %DATA_PATH% --schema_fpath %SCHEMA_PATH%
+python "%BATDIR%\infer_schema\main.py" %DATA_PATH% --schema_fpath %SCHEMA_PATH%
 goto end
 
 :end

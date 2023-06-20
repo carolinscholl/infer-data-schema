@@ -4,14 +4,16 @@ import os
 import pandas as pd
 from omegaconf import OmegaConf
 
-import src.utils.check_dtype as check_type
-from src.utils.utils import get_schema_fpath, replace_non_ascii_characters
+import infer_schema.utils.check_dtype as check_type
+from infer_schema.utils.utils import get_schema_fpath, replace_non_ascii_characters
 from typing import Optional
 
 
 class InferCSVSchema:
     version = "version 1.2"  # version of csv standard
-    literals_fpath = os.path.join(os.getcwd(), "src", "resources", "csv-type-literals.yml")
+    literals_fpath = os.path.join(os.getcwd(), "infer_schema", "resources", "csv-type-literals.yml")
+    validator_exec = "validate.bat" if os.name == 'nt' else "validate"
+    validator_path = os.path.join(os.getcwd(), "lib", "csv-validator-1.2", "bin", validator_exec)
 
     def __init__(self, csv_path: str):
         """
@@ -170,7 +172,8 @@ class InferCSVSchema:
 
     def run(self, schema_fpath: Optional[str] = None) -> bool:
         """
-        Run csv schema inference and save inferred schema (same path as data file with extension _schema-draft.csvs).
+        Run csv schema inference, save inferred schema (same path as data file with extension _schema-draft.csvs) and
+        validate it.
 
         :param schema_fpath: optional path for output schema, otherwise path will be data file name + _schema-draft.csvs
         :return: True if schema inference worked and data file could be validated with it, False otherwise

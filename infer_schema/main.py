@@ -1,11 +1,12 @@
 import argparse
 import logging
 
-from src.infer_schema.infer_json_schema import InferJSONSchema
-from src.infer_schema.infer_csv_schema import InferCSVSchema
+from infer_schema.infer_json_schema import InferJSONSchema
+from infer_schema.infer_csv_schema import InferCSVSchema
 
 
-if __name__ == '__main__':
+def main():
+
     logging.basicConfig(format='(%(levelname)s) - %(message)s', level=logging.INFO)
 
     parser = argparse.ArgumentParser()
@@ -18,8 +19,14 @@ if __name__ == '__main__':
 
     if data_fpath.endswith("json"):
         InferJSONSchema(data_fpath).run(schema_fpath=schema_fpath)
-    elif data_fpath.endswith("csv"):
+    elif data_fpath.endswith("csv") or data_fpath.endswith("tsv"):
         InferCSVSchema(data_fpath).run(schema_fpath=schema_fpath)
     else:
-        logging.error(f"File type for {data_fpath} not supported. Only files with .json or .csv-extension are "
-                      f"supported.")
+        msg = f"File type for {data_fpath} not supported."\
+              f" Only files with .json or .csv-extension are"\
+              f" supported."
+        logging.error(msg)
+
+
+if __name__ == '__main__':
+    main()

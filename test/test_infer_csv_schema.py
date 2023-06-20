@@ -1,9 +1,10 @@
 import os
 import shutil
+import subprocess
 import tempfile
 import unittest
 
-from src.infer_schema.infer_csv_schema import InferCSVSchema
+from infer_schema.infer_csv_schema import InferCSVSchema
 
 
 class InferCsvSchemaTest(unittest.TestCase):
